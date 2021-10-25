@@ -19,7 +19,7 @@ package threadstart;
  *
  * Concurrent - паралельный
  */
-public class ConcurrentOutput {
+public class ThreadStart {
 
     /**
      * Задание
