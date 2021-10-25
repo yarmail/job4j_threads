@@ -1,4 +1,4 @@
-package concurrent;
+package threadstart;
 
 /*
 Запуск нити. Thread#start() [#1016]
