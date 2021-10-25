@@ -1,6 +1,5 @@
 package concurrent;
 
-
 /**
  * Thread.currentThread().getName() -
  * Этот статический метод позволяет получить
@@ -49,5 +48,9 @@ public class ConcurrentOutput {
         System.out.println(Thread.currentThread().getName());
     }
 }
-
-
+/*
+Вывод:
+Thread-0
+main
+Thread-1
+ */
