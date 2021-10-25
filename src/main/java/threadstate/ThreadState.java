@@ -54,7 +54,7 @@ public class ThreadState {
         System.out.println(second.getName());
         second.start();
 
-        for (; ; ) {
+        for (; ;) {
             if (first.getState() == Thread.State.TERMINATED
                     && second.getState() == Thread.State.TERMINATED) {
                 System.out.println("Работа завершена");
