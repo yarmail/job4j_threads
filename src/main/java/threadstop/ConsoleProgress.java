@@ -32,6 +32,9 @@ public class ConsoleProgress implements Runnable {
      * Thread.sleep(1000) -
      * симулируем выполнение
      * параллельной задачи в течение 1 секунды.
+     *
+     * Примечание:
+     * Вероятно прерывание после sleep() выдает ошибку
      */
     public static void main(String[] args) throws InterruptedException {
         Thread progress = new Thread(new ConsoleProgress());
