@@ -13,6 +13,35 @@ package threadstop;
  * В тело цикла добавьте вывод в консоль.
  */
 public class ConsoleProgress implements Runnable {
+    /**
+     * 3.1. Прерывание блокированной нити. [#267413]
+     * Метод Thread.interrupt() не выставляет флаг прерывания,
+     * если нить находится в режиме WAIT, JOIN.
+     * В этом случае методы sleep(), join(), wait()
+     * выкинут исключение. Поэтому нужно дополнительно
+     * проставить флаг прерывания.
+     *
+     * В блоке catch нужно дополнительно вызывать
+     * прерывание нити для того чтобы прерывания
+     * действительно произошло.
+     * Было:
+     * catch (InterruptedException e) {
+     * e.printStackTrace();
+     *
+     * Стало:
+     * catch (InterruptedException e) {
+     * Thread.currentThread().interrupt();
+     *
+     * Эта схема является шаблоном.
+     * Запомните, если используются методы
+     * sleep(), join() или wait(), то нужно
+     * в блоке catch вызвать прерывание.
+     *
+     * Задание.
+     * Поправьте код в классе ConsoleProgress.
+     * В блоке catch уберите исключение и добавьте прерывание.
+     *
+     */
     @Override
     public void run() {
         String[] symbol = {"\\", "|", "/", "-"};
@@ -22,7 +51,7 @@ public class ConsoleProgress implements Runnable {
                 try {
                     Thread.sleep(500);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    Thread.currentThread().interrupt();
                 }
             }
         }
