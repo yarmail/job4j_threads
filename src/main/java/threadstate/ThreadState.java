@@ -54,21 +54,13 @@ public class ThreadState {
         System.out.println(second.getName());
         second.start();
 
-        while (true) {
-            if (first.getState() == Thread.State.TERMINATED
-                    && second.getState() == Thread.State.TERMINATED) {
-                System.out.println("Работа завершена");
-                break;
-            }
+        while (first.getState() != Thread.State.TERMINATED || second.getState() != Thread.State.TERMINATED) {
+            System.out.println("Состояние нити first " + first.getState());
+            System.out.println("Состояние нити second " + second.getState());
         }
+        System.out.println("Работа завершена");
     }
 }
-/*
-Вывод
-Thread-0
-Thread-1
-Работа завершена
- */
 
 /*
 состояние main до начала задания
