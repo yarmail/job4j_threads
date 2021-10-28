@@ -4,7 +4,20 @@ import java.io.BufferedInputStream;
 import java.io.FileOutputStream;
 import java.net.URL;
 
-public record Wget(String url, int speed, String target) implements Runnable {
+/**
+ * Примечание
+ * Такой класс можно переделать в Record
+ */
+public final class Wget implements Runnable {
+    private final String url;
+    private final int speed;
+    private final String target;
+
+    public Wget(String url, int speed, String target) {
+        this.url = url;
+        this.speed = speed;
+        this.target = target;
+    }
 
     /**
      * Разработать метод run()
@@ -42,6 +55,9 @@ public record Wget(String url, int speed, String target) implements Runnable {
     }
 
     public static void main(String[] args) throws InterruptedException {
+        if (args.length < 2) {
+            throw new IllegalArgumentException();
+        }
         String url = args[0];
         int speed = Integer.parseInt(args[1]);
         Thread wget = new Thread(new Wget(url, speed, "temp.xml"));
