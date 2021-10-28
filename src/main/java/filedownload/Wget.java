@@ -10,6 +10,9 @@ import java.net.URL;
  */
 public final class Wget implements Runnable {
     private final String url;
+    /**
+     * Предполанаем, что наша скорость задана в байтах/сек
+     */
     private final int speed;
     private final String target;
 
@@ -42,8 +45,12 @@ public final class Wget implements Runnable {
                     while ((bytesRead = in.read(dataBuffer, 0, 1024)) != -1) {
                         fileOutputStream.write(dataBuffer, 0, bytesRead);
                         long rsl = System.currentTimeMillis() - time;
-                        if (rsl < speed) {
-                            Thread.sleep(speed - rsl);
+                        /*
+                        вычисляем скорость в байтах в секунду
+                        */
+                        int speedTest = (int) (1024 / (rsl / 1000));
+                        if (speedTest < speed) {
+                            Thread.sleep((speed - speedTest) * 1000);
                         }
                         time = System.currentTimeMillis();
                     }
