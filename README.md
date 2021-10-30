@@ -3,7 +3,6 @@
 ### Project job4j_threads 
 
 #### Description
-* 1
-* 2
-* 3
+
+Studying and solving issues related to a multithreaded application
 
