@@ -32,6 +32,9 @@ public class UsersStorage {
         boolean result = false;
         User userFrom = storage.get(fromId);
         User userTo = storage.get(toId);
+        if (userFrom == null || userTo == null) {
+            throw new NullPointerException("Exception: userFrom or userTo is null!");
+        }
         if (userFrom.getAmount() >= userTo.getAmount()) {
             userFrom.setAmount(userTo.getAmount() - amount);
             userTo.setAmount(userTo.getAmount() + amount);
