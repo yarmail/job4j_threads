@@ -1,4 +1,4 @@
-package jcipuserstorage;
+package userstorage;
 
 /*
  Класс хранилища пользователей UserStorage [#1104]

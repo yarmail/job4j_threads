@@ -1,4 +1,4 @@
-package jcipuserstorage;
+package userstorage;
 
 /**
  * amount - это сумма денег на счете пользователя.
