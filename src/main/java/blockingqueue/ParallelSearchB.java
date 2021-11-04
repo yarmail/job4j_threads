@@ -16,6 +16,7 @@ package blockingqueue;
  * 1. Изменить код, так, что бы потребитель
  * завершал свою работу.
  * Код нужно изменить в методе main.
+ *
  */
 public class ParallelSearchB {
 
