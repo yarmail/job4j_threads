@@ -1,7 +1,6 @@
-import junit.framework.TestCase;
+package poolthread;
 
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
