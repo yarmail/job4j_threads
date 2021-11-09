@@ -5,7 +5,6 @@ import java.util.concurrent.Executors;
 
 /**
  * pool - Создает пул нитей по количеству доступных процессоров.
- *
  */
 public class EmailNotification {
     private final ExecutorService pool = Executors.newFixedThreadPool(
