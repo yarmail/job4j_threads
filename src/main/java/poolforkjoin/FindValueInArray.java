@@ -8,10 +8,11 @@ import java.util.concurrent.RecursiveTask;
  * В целях оптимизации, если размер массива не больше 10,
  * использовать обычный линейный поиск.
  *
+ * from, to - индексы
  * value - искомое число
+ * (есть тесты)
  */
 public class FindValueInArray extends RecursiveTask<Integer> {
-
     private final int[] arr;
     private final int value;
     private final int to;
@@ -24,24 +25,24 @@ public class FindValueInArray extends RecursiveTask<Integer> {
         this.from = from;
     }
 
-    public int findMethod(int from, int to) {
-        var res = -1;
+    public int linearSearch() {
+        int  result = -1;
         if (from == to) {
             return arr[0];
         }
-        for (var i = from; i <= to; i++) {
+        for (int i = from; i <= to; i++) {
             if (arr[i] == value) {
-                res = i;
+                result = i;
                 break;
             }
         }
-        return res;
+        return result;
     }
 
     @Override
     protected Integer compute() {
         if (to - from < 10) {
-            return findMethod(from, to);
+            return linearSearch();
         }
         int mid = ((from + to) - 1) / 2;
         FindValueInArray findValueInArray1 = new FindValueInArray(arr, value, from, mid);
@@ -51,6 +52,12 @@ public class FindValueInArray extends RecursiveTask<Integer> {
         return Math.max(findValueInArray1.join(), findValueInArray2.join());
     }
 
+    /**
+     *  Как я понимаю, метод find
+     *  паралельным поиском находит
+     *  индекс элемента value
+     * (рассчитывая from и to из массива )
+     */
     public static Integer find(int[] array, int value) {
         ForkJoinPool forkJoinPool = new ForkJoinPool();
         return forkJoinPool.invoke(new FindValueInArray(array, value, 0, array.length - 1));
