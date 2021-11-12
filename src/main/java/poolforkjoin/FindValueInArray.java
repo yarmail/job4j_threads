@@ -27,9 +27,6 @@ public class FindValueInArray extends RecursiveTask<Integer> {
 
     public int linearSearch() {
         int  result = -1;
-        if (from == to) {
-            return arr[0];
-        }
         for (int i = from; i <= to; i++) {
             if (arr[i] == value) {
                 result = i;
@@ -58,7 +55,7 @@ public class FindValueInArray extends RecursiveTask<Integer> {
      *  индекс элемента value
      * (рассчитывая from и to из массива )
      */
-    public static Integer find(int[] array, int value) {
+    public static int find(int[] array, int value) {
         ForkJoinPool forkJoinPool = new ForkJoinPool();
         return forkJoinPool.invoke(new FindValueInArray(array, value, 0, array.length - 1));
     }

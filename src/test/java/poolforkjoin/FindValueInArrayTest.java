@@ -32,4 +32,15 @@ public class FindValueInArrayTest {
         int val = 0;
         assertThat(FindValueInArray.find(arr, val), is(0));
     }
+
+    /**
+     * Добавьте тест, когда метод ничего не найдет и вернет -1
+     * Значение 0 индекс не находится
+     */
+    @Test
+    public void whenNotFindValue() {
+        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+        int val = 0;
+        assertThat(FindValueInArray.find(arr, val), is(-1));
+    }
 }
