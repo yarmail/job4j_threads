@@ -7,7 +7,7 @@ public class Barrier {
      */
     private boolean flag = false;
     /**
-     * Синхронизация и методы nofityAll
+     * Синхронизация и методы notifyAll
      * и wait вызываются у объекта класса Barrier
      */
     private final Object monitor = this;
